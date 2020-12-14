@@ -1,5 +1,5 @@
 # circalizer
-Flexible stacked visualization of circadian data from multiple sources and devices. Out-of-core and big data ready.
+(WIP) Flexible stacked visualization of circadian data from multiple sources and devices. Out-of-core and big data ready.
 
 The first step to understand any kind of data is to observe it. Hence this tool, which aims to accept any kind of input data as long as it can be loaded through Dask's DataFrames. All the data will be plotted through datashader and stacked on the same timeline, synchronized by the timestamp, as to allow full exploration without any loss of information. A small timeline is shown to ease selection of data segments, along with zooming tools to any resolution.
 
