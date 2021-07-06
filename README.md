@@ -11,3 +11,5 @@ The tool is available as an Jupyter Notebook and can also be deployed on a Herok
 ## Current state
 
 The previous section describes what aims to be the final product. For now, preliminary work on visualization was finished, so that this serves as a proof-of-concept that the aim is reachable. The visualizations must now be polished, stacked together, generalized to be data-agnostic and finally made into a dashboard using Panel to be used online with file upload capability (through Panel again).
+
+See also https://github.com/jtpio/jupyterlite to run in browser until a HoloViz Panel is implemented.
