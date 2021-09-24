@@ -8,6 +8,8 @@ This tool is not meant to analyze the data, although it may include rudimentary 
 
 The tool is available as an Jupyter Notebook and can also be deployed on a Heroku or similar server thanks to HoloViz's Panel. Although it can work online thanks to Panel's file upload capabilities, this tool is mostly useful to plot big data from multiple sources (hundreds of GBs to dozens of TB), in which case it's better to launch the server or load the notebook locally as transferring file of such size is practically impossible over current internet connections.
 
+The full dataset can be found on FigShare, licensed under Creative Commons BY 4.0 (CC BY 4.0): https://figshare.com/projects/MyNon24/101804
+
 ## Current state
 
 The previous section describes what aims to be the final product. For now, preliminary work on visualization was finished, so that this serves as a proof-of-concept that the aim is reachable. The visualizations must now be polished, stacked together, generalized to be data-agnostic and finally made into a dashboard using Panel to be used online with file upload capability (through Panel again).
