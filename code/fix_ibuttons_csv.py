@@ -1,26 +1,34 @@
-# Fix iButtons incorrect csv formatting in the last column (value), where floating point numbers are represented with a comma, hence  messing up with the csv since it's comma separated. We replace with a dot.
-# v0.2
+# Fix iButtons incorrect csv formatting in the last column (value), where floating point numbers are represented with a comma, hence  messing up with the csv since it's comma separated. We replace with a dot, and save in a new subfolder called "fixed".
+# v0.4
 # Created on 2020-06-26 by Stephen Karl Larroque
 
 import codecs
+import os
 import re
 import sys
 
 # Precompile regex to be faster
-RE_comma = re.compile(r'(\d+),(\d+)')
+RE_comma = re.compile(r'(\d+),(\d+)$')
 
 def fix_ibuttons_csv(infile):
-    outfilename = infile[:-4]+'_fixed.csv'
+    # Create a new "fixed" folder to save the fixed csv files there
+    infileparent, infilename = os.path.split(infile)
+    newfolder = os.path.join(infileparent, 'fixed')
+    if not os.path.exists(newfolder):
+        os.makedirs(newfolder)
+    outfilename = os.path.join(newfolder, infilename)
+    # Open both the input and output csv files
     with codecs.open(infile, 'r') as f, codecs.open(outfilename, 'w') as o:
         # Use a flag to detect when the values table begins, before there is a short table describing the parameters
         headerfound = False
         for line in f:
             if not headerfound:
-                # Header not found, just copy line as-is
-                o.write(line)
-                # Check if we find the header of the values table
-                if 'value' in line.lower():
+                # Header not found yet, just copy line as-is
+                #o.write(line)  # do not copy so we skip non table rows, this will ease parsing in python
+                # Check if we find the header of the values table in the current line
+                if ',value' in line.lower():
                     headerfound = True
+                    o.write(line)  # write header line
             else:
                 # Else the header was found before, we need to fix this line
                 if RE_comma.search(line):
